@@ -632,15 +632,15 @@ public abstract class JenkinsUtils {
 		}
 
         if(PipelineConfigUtils.isMultiBranch(pipelineConfig)) {
-            Map<String, String> labels = pipeline.getMetadata().getLabels();
-            if(labels == null) {
+            Map<String, String> annotations = pipeline.getMetadata().getAnnotations();
+            if(annotations == null) {
                 ObjectMeta meta = pipeline.getMetadata();
-                LOGGER.severe(String.format("Pipeline [%s,%s] don't have labels, can't find the Workflow.",
+                LOGGER.severe(String.format("Pipeline [%s,%s] don't have annotations, can't find the Workflow.",
                         meta.getNamespace(), meta.getName()));
                 return null;
             }
 
-            String branchName = labels.get(MULTI_BRANCH_NAME);
+            String branchName = annotations.get(MULTI_BRANCH_NAME);
             WorkflowMultiBranchProject project = PipelineConfigToJobMap.getMultiBranchByPC(pipelineConfig);
             if(project != null) {
                 final SecurityContext previousContext = ACL.impersonate(ACL.SYSTEM);
@@ -768,4 +768,18 @@ public abstract class JenkinsUtils {
 		}
 		return name;
 	}
+
+    /**
+     * TODO consider gather with other methods
+     * @param run
+     * @return
+     */
+	public static boolean fromMultiBranch(@NotNull Run run) {
+        Job wfJob = run.getParent();
+        if(!(wfJob instanceof WorkflowJob)) {
+            return false;
+        }
+
+        return (wfJob.getParent() instanceof WorkflowMultiBranchProject);
+    }
 }
