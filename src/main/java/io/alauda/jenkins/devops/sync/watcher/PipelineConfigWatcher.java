@@ -296,11 +296,7 @@ public class PipelineConfigWatcher extends AbstractWatcher implements BaseWatche
     private synchronized void modifyEventToJenkinsJob(PipelineConfig pipelineConfig) throws Exception {
         if (AlaudaUtils.isPipelineStrategyPipelineConfig(pipelineConfig)) {
             upsertJob(pipelineConfig);
-            return;
         }
-
-        // no longer a Jenkins build so lets delete it if it exists
-//    deleteEventToJenkinsJob(pipelineConfig);
     }
 
     // innerDeleteEventToJenkinsJob is the actual delete logic at the heart of
