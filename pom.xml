@@ -35,7 +35,7 @@
     <jenkins.version>2.83</jenkins.version>
     <java.level>8</java.level>
 
-    <devops-client.version>0.2.7-SNAPSHOT</devops-client.version>
+    <devops-client.version>0.2.7</devops-client.version>
     <log.level>INFO</log.level>
     <findbugs-maven-plugin.version>3.0.1</findbugs-maven-plugin.version>
     <findbugs.failOnError>false</findbugs.failOnError>
@@ -126,11 +126,11 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>io.alauda</groupId>
-      <artifactId>kubernetes-model</artifactId>
-      <version>0.2.8-SNAPSHOT</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>io.alauda</groupId>-->
+      <!--<artifactId>kubernetes-model</artifactId>-->
+      <!--<version>0.2.8</version>-->
+    <!--</dependency>-->
 
     <dependency>
        <groupId>io.jenkins.blueocean</groupId>
