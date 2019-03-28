@@ -36,6 +36,7 @@
     <java.level>8</java.level>
 
     <devops-client.version>0.2.9</devops-client.version>
+    <kubernetes-model.version>0.2.10</kubernetes-model.version>
     <log.level>INFO</log.level>
     <findbugs-maven-plugin.version>3.0.1</findbugs-maven-plugin.version>
     <findbugs.failOnError>false</findbugs.failOnError>
@@ -133,7 +134,7 @@
     <dependency>
       <groupId>io.alauda</groupId>
       <artifactId>kubernetes-model</artifactId>
-      <version>0.2.10</version>
+      <version>${kubernetes-model.version}</version>
     </dependency>
 
     <dependency>
